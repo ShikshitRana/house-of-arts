@@ -1,0 +1,156 @@
+.account {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  height: 90vh;
+}
+
+.accountleft {
+  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vmax;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.accountright {
+  width: 20%;
+  height: 90vh;
+  padding: 2vmax;
+  box-sizing: border-box;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.accountright img:hover {
+  transform: scale(1.1);
+}
+
+.accountright img {
+  transition: all 0.5s;
+}
+
+.accountright > h5 {
+  margin: 2vmax;
+}
+
+.profile_edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.profile_name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 1vmax;
+}
+
+.profile_editbtn {
+  padding: 0 15px;
+}
+
+.profile_name > button {
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: rgb(255, 255, 255) !important;
+  color: black;
+  box-shadow: none !important;
+  
+}
+
+.profile_name > button:hover {
+  transform: scale(1.2) !important;
+  transition: 0.5s !important;
+}
+
+
+.profile_stats{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1vmax;
+}
+
+.profile_stats > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1vmax;
+}
+
+.profile_fl > button {
+ border: none;
+background-color: white;
+
+padding: 4px;
+}
+
+.profile_fl > button:hover {
+  transform: scale(1.1);
+  transition: 0.7s;
+}
+
+.profile_pass {
+  text-decoration: none;
+  margin: 1.8vmax;
+}
+
+.profile_pass:hover { 
+  transform: scale(1.1);
+  transition: 0.7s;
+}
+
+@media screen and (max-width: 600px) {
+  .account {
+    flex-direction: column-reverse;
+    height: 93vh;
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+  }
+
+  .accountleft {
+    padding: 2vmax;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .accountright {
+    height: 300px;
+    overflow-y: hidden;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .profile_iden{
+    margin-right: 1vmax;
+  }
+
+  .profile_edit {
+    flex-direction: row;
+    width: 100%;
+  }
+  
+
+  .profile_stats{
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+}
