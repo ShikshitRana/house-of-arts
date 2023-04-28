@@ -390,18 +390,19 @@ exports.forgotPassword = async (req, res) => {
       "host"
     )}/password/reset/${resetPasswordToken}`;
 
-    const message = `Reset Your Password by clicking on the link below: \n\n ${resetUrl}`;
+    const message = resetUrl;
 
     try {
       await sendEmail({
+        name: user.name,
         email: user.email,
-        subject: "Reset Password",
+        subject: "House of Arts, reset your password",
         message,
       });
 
       res.status(200).json({
         success: true,
-        message: `Email sent to ${user.email}`,
+        message: `Email sent to ${user.email}, don't forget to check spam folder`,
       });
     } catch (error) {
       user.resetPasswordToken = undefined;

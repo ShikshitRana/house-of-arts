@@ -1,21 +1,51 @@
-const nodeMailer = require("nodemailer");
+const nodemailer = require("nodemailer");
+const Mailgen = require("mailgen");
 
 exports.sendEmail = async (options) => {
-  const transporter = nodeMailer.createTransport({
-    host: "smtp.mailtrap.io",
-    port: 2525,
+  let config = {
+    service: "gmail",
     auth: {
-      user: "211d4679e3d79c",
-      pass: "9e2b7d43009e26",
+      user: process.env.EMAIL,
+      pass: process.env.PASSWORD,
+    },
+  };
+
+  let transporter = nodemailer.createTransport(config);
+
+  let MailGenerator = new Mailgen({
+    theme: "default",
+    product: {
+      name: "House of Arts",
+      link: "https://hoa.onrender.com/",
     },
   });
 
-  const mailOptions = {
-    from: process.env.SMPT_MAIL,
-    to: options.email,
-    subject: options.subject,
-    text: options.message,
+  let response = {
+    body: {
+      name: options.name,
+      intro: "A request to reset your password has been made for your account.",
+      action: {
+        instructions: "To reset your password, please click the button below:",
+        button: {
+          color: "#D70040", // Optional action button color
+          text: "Click Me",
+          link: options.message,
+          logo: "https://i.imgur.com/7oCPlhS_d.webp",
+        },
+      },
+      outro:
+        "If you did not request a password reset, no further action is required on your part.",
+    },
   };
 
-  await transporter.sendMail(mailOptions);
+  let mail = MailGenerator.generate(response);
+
+  let message = {
+    from: process.env.EMAIL,
+    to: options.email,
+    subject: options.subject,
+    html: mail,
+  };
+
+  await transporter.sendMail(message);
 };
