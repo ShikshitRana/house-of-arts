@@ -1,7 +1,12 @@
 .commentUser {
   display: flex;
-  align-items: center;
-  color: rgba(0, 0, 0, 0.507);
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1vmax;
+  margin: 1vmax 0;
+  border-radius: 5px;
+  background-color: #f9fbfc;
 }
 
 .commentUser > a {
@@ -10,20 +15,57 @@
   color: rgb(0, 0, 0);
   align-items: center;
   align-self: flex-start;
-  transition: all 0.5s;
 }
-.commentUser img {
-  height: 3vmax;
-  width: 3vmax;
-  margin: 1vmax;
+
+.commentUser > a > img {
+  height: 1.5vmax;
+  width: 1.5vmax;
   border-radius: 100%;
-  border: 3px solid rgb(255, 201, 201);
+  border: 2px solid rgb(231, 231, 231);
+  margin-right: 0.5vmax;
 }
 
-.commentUser > a:hover {
-  transform: translateY(-10px);
+.user_name {
+  font-size: 1vmax;
+  font-weight: 600;
+  margin-left: 0.5vmax;
+  font-family: "Playfair Display", serif;
 }
 
-.commentUser > button {
-  color: red;
+.comment_txt {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.381);
+  margin: 1vmax 0;
+}
+
+.comment_dlt_btn {
+  margin: auto;
+  width: fit-content;
+  text-align: center;
+  background-color: #f9fbfc;
+  border: none;
+  transition: 0.2s;
+}
+
+.comment_dlt_btn > img {
+  cursor: pointer;
+  height: 1vmax;
+  width: 1vmax;
+}
+
+.comment_dlt_btn:hover {
+  transform: scale(1.1);
+}
+
+
+@media screen and (max-width: 600px) {
+  .commentUser > a > img {
+    
+    height: 4vmax;
+    width: 4vmax;
+    border-radius: 100%;
+    border: 1px solid rgb(231, 231, 231);
+    margin-right: 0.5vmax;
+  }
 }

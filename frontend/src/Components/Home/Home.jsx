@@ -2,12 +2,11 @@ import "./Home.css";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers, getFollowingPosts } from "../../Actions/User";
- 
+
 import Post from "../Post/Post";
 import User from "../User/User";
 import Loader from "../Loader/Loader";
 
-import { Typography } from "@mui/material";
 import { useAlert } from "react-alert";
 
 const Home = () => {
@@ -23,7 +22,6 @@ const Home = () => {
   );
 
   const { error: likeError, message } = useSelector((state) => state.like);
-  
 
   useEffect(() => {
     dispatch(getFollowingPosts());
@@ -67,7 +65,14 @@ const Home = () => {
             />
           ))
         ) : (
-          <Typography variant="h6">No posts yet</Typography>
+          <>
+            <p className="h_txt">
+              No posts yet
+            </p>
+            <p className="h_login">
+              Follow some users to see their posts in your feed.
+            </p>
+          </>
         )}
       </div>
       <div className="homeright">
@@ -81,7 +86,7 @@ const Home = () => {
             />
           ))
         ) : (
-          <Typography>No Users Yet</Typography>
+          <p className="h_txt">No Users Yet</p>
         )}
       </div>
     </div>

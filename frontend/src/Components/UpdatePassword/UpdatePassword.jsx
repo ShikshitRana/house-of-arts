@@ -1,7 +1,5 @@
 import "./UpdatePassword.css";
-import logo from "../../Assets/logo.png";
 import React, { useEffect, useState } from "react";
-import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePassword } from "../../Actions/User";
 import { useAlert } from "react-alert";
@@ -17,6 +15,16 @@ const UpdatePassword = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    if (oldPassword === newPassword) {
+      alert.error("Both passwords cannot be same.");
+      return;
+    }
+
+    if(newPassword.length < 6){
+      alert.error("Password must be atleast 6 characters long.");
+      return;
+    }
+
     dispatch(updatePassword(oldPassword, newPassword));
   };
 
@@ -32,35 +40,77 @@ const UpdatePassword = () => {
     }
   }, [dispatch, error, alert, message]);
 
+  const [txt, setTxt] = useState("password");
+  const [eyeIcon, setIcon] = useState("/images/show.png");
+
+  const showpwd = () => {
+    if (txt === "password") {
+      setTxt("text");
+      setIcon("/images/hide.png");
+    } else {
+      setTxt("password");
+      setIcon("/images/show.png");
+    }
+  };
+
+
+  const [txt1, setTxt1] = useState("password");
+  const [eyeIcon1, setIcon1] = useState("/images/show.png");
+  const showpwdn = () => {
+    if (txt1 === "password") {
+      setTxt1("text");
+      setIcon1("/images/hide.png");
+    } else {
+      setTxt1("password");
+      setIcon1("/images/show.png");
+    }
+  };
+
   return (
-    <div className="updatePassword">
-      <form className="updatePasswordForm" onSubmit={submitHandler}>
-      <div className="logo">
-          <img className="logo_img" src={logo} alt="" />
+    <div className="newPost">
+      <form className="newPostForm" onSubmit={submitHandler}>
+        <div className="h_txt">Update Password?</div>
+        <div className="password_label">Old Password</div>
+
+        <div className="pwdDiv">
+          <input
+            className="input_pwd"
+            type={txt}
+            placeholder=""
+            value={oldPassword}
+            onChange={(e) => setOldPassword(e.target.value)}
+            autoComplete="on"
+            required
+          />
+
+          <div className="show">
+            <img onClick={showpwd} src={eyeIcon} alt="show password" />
+          </div>
         </div>
 
-        <input
-          type="password"
-          placeholder="Old Password"
-          required
-          value={oldPassword}
-          className="updatePasswordInputs"
-          onChange={(e) => setOldPassword(e.target.value)}
-        />
+        <div className="password_label">New Password</div>
 
-        <input
-          type="password"
-          placeholder="New Password"
-          required
-          className="updatePasswordInputs"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-        />
+        <div className="pwdDiv">
+          <input
+            className="input_pwd"
+            type={txt1}
+            placeholder=""
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            autoComplete="on"
+            required
+          />
 
-        <Button disabled={loading} type="submit">
-          Change Password
-        </Button>
+          <div className="show">
+            <img onClick={showpwdn} src={eyeIcon1} alt="show password" />
+          </div>
+        </div>
+
+        <button className="sbt_btn" disabled={loading} type="submit">
+          Update
+        </button>
       </form>
+      <div className="end_div_np"></div>
     </div>
   );
 };

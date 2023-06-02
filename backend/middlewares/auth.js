@@ -7,7 +7,7 @@ exports.isAuthenticated = async (req, res, next) => {
 
     if (!token) {
       return res.status(401).json({
-        message: "Please login first",
+        message: "Please login or register to proceed.",
       });
     }
 

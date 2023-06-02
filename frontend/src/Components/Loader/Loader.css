@@ -1,21 +1,36 @@
 .loadingPage {
-  height: 90vh;
-  width: 100%;
-  display: grid;
-  place-items: center;
-}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
 
-.loadingCircle {
-  width: 200px;
-  height: 200px;
+
+  width: 85%;
+  height: 100vh;
+}
+.loader {
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  border: 10px solid #ffffff;
-  border-top: 10px solid rgb(34, 34, 34);
-  border-bottom: 10px solid rgb(32, 23, 23);
-  animation: loading 1s linear infinite;
+  display: inline-block;
+  position: relative;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 33%, #000000 100%);
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
 }
-
-@keyframes loading {
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+@keyframes rotation {
   0% {
     transform: rotate(0deg);
   }
@@ -26,6 +41,7 @@
 
 @media screen and (max-width: 600px) {
   .loadingPage {
+    width: 100%;
     height: 93vh;
   }
 }

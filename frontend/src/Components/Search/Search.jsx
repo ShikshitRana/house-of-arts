@@ -1,5 +1,3 @@
-import { Button } from "@mui/material";
-import logo from "../../Assets/logo.png";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../../Actions/User";
@@ -18,24 +16,25 @@ const Search = () => {
   };
 
   return (
-    <div className="search">
-      <form className="searchForm" onSubmit={submitHandler}>
-      <div className="logo">
-          <img className="logo_img" src={logo} alt="" />
+    <div className="newPost">
+      <form className="newPostForm" onSubmit={submitHandler}>
+        <div className="h_txt">Search Users</div>{" "}
+        <div className="h_login">
+          Type the name of the user below to search.
         </div>
-
         <input
           type="text"
           value={name}
           placeholder="Name"
-          required
+          className="registerInputs"
           onChange={(e) => setName(e.target.value)}
+          required
         />
-
-        <Button disabled={loading} type="submit">
+        <button className="sbt_btn" disabled={loading} type="submit">
           Search
-        </Button>
-
+        </button>
+      </form>
+      <div className="end_div_np">
         <div className="searchResults">
           {users &&
             users.map((user) => (
@@ -47,7 +46,7 @@ const Search = () => {
               />
             ))}
         </div>
-      </form>
+      </div>
     </div>
   );
 };

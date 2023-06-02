@@ -1,156 +1,400 @@
 .account {
-  box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  height: 90vh;
+  width: 85%;
+  height: 100vh;
 }
 
-.accountleft {
-  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
+.account_left {
   width: 80%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2vmax;
-  box-sizing: border-box;
+  padding: 0;
   overflow-y: auto;
 }
-.accountright {
+
+.account_right {
+  overflow: hidden;
   width: 20%;
-  height: 90vh;
-  padding: 2vmax;
-  box-sizing: border-box;
-  overflow-y: auto;
+  height: 100vh;
+
+  padding: 4%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.userName {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: hidden;
-}
-
-.accountright img:hover {
-  transform: scale(1.1);
-}
-
-.accountright img {
-  transition: all 0.5s;
-}
-
-.accountright > h5 {
-  margin: 2vmax;
-}
-
-.profile_edit {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  color: rgba(0, 0, 0, 0.781);
+  font-size: 1.5vmax;
+  font-weight: 500;
+  margin: 1vmax 0 5vmax;
+  font-family: "Playfair Display", serif;
+}
+
+.profile_details {
   width: 100%;
 }
 
-.profile_name {
+.profile_fl {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
-  margin: 1vmax;
-}
-
-.profile_editbtn {
-  padding: 0 15px;
-}
-
-.profile_name > button {
-  margin: 0 !important;
-  padding: 0 !important;
-  background-color: rgb(255, 255, 255) !important;
-  color: black;
-  box-shadow: none !important;
-  
-}
-
-.profile_name > button:hover {
-  transform: scale(1.2) !important;
-  transition: 0.5s !important;
-}
-
-
-.profile_stats{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 1vmax;
-}
-
-.profile_stats > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 1vmax;
+  margin-top: 1vmax;
+  font-weight: 600;
+  font-size: 1.2vmax;
 }
 
 .profile_fl > button {
- border: none;
-background-color: white;
-
-padding: 4px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #000000ac;
+  font-weight: 600;
+  font-size: 1.2vmax;
 }
 
 .profile_fl > button:hover {
-  transform: scale(1.1);
-  transition: 0.7s;
+  color: #000;
 }
 
-.profile_pass {
-  text-decoration: none;
-  margin: 1.8vmax;
+.profile_pos > button {
+  cursor: auto;
 }
 
-.profile_pass:hover { 
-  transform: scale(1.1);
-  transition: 0.7s;
+.profile_pos > button:hover {
+  color: #000000ac;
+}
+
+.profile_fl > p {
+  color: rgba(210, 94, 216, 0.953);
+}
+
+.settings_btn {
+  width: 2vmax;
+  height: 2vmax;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: 5vmax;
+}
+
+.settings_icon {
+  width: 2vmax;
+  height: 2vmax;
+  color: rgba(212, 97, 97, 0.781);
+  animation: rotateImg 8s linear infinite;
+}
+
+@keyframes rotateImg {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.settings_icon:hover {
+  animation-play-state: paused;
+}
+
+.fl_ufl_btn {
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 7px;
+}
+
+.fl_ufl_btn:hover {
+  background-color: rgba(0, 0, 0, 0.041);
+}
+
+.account_footer_txt {
+  position: absolute;
+  bottom: 0;
+  font-size: 0.5vmax;
+  margin: 2vmax;
+}
+
+.settingDialogBox {
+  width: 320px;
+  height: 100%;
+  max-height: 90vh;
+  overflow-y: scroll;
+  padding: 2vmax;
+}
+
+/* ...........profile settings button.............. */
+
+.pro_set_btn {
+  width: 100%;
+  height: 4vmax;
+  border-radius: 5px;
+
+  background-color: rgba(0, 0, 0, 0.232);
+  border: none;
+
+  margin-bottom: 1vmax;
+
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ....profile update button.... */
+
+.pwd_update_btn:hover {
+  background-color: rgb(0, 211, 11);
+}
+
+.pro_set_icon {
+  width: 1px;
+
+  position: absolute;
+  bottom: -30px;
+  color: white;
+  transition-duration: 0.3s;
+  font-size: 2px;
+}
+
+.pwd_update_btn:hover .pro_set_icon {
+  width: 35px;
+  transition-duration: 0.3s;
+  transform: translateY(-35px);
+}
+
+.pwd_update_btn::before {
+  content: "Change Password";
+  color: white;
+  transition-duration: 0.3s;
+}
+
+.pwd_update_btn:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  transform: translateY(-20px);
+  transition-duration: 0.3s;
+}
+
+/* ....profile edit button.... */
+
+.pro_edit_btn:hover {
+  background-color: rgb(0, 204, 235);
+}
+
+.pro_edit_icon {
+  width: 1px;
+
+  position: absolute;
+  bottom: -30px;
+  color: white;
+  transition-duration: 0.3s;
+  font-size: 2px;
+}
+
+.pro_edit_btn:hover .pro_edit_icon {
+  width: 50px;
+  transition-duration: 0.3s;
+  transform: translateY(-30px);
+}
+
+.pro_edit_btn::before {
+  content: "Update Profile";
+  color: white;
+  transition-duration: 0.3s;
+}
+
+.pro_edit_btn:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  transform: translateY(-20px);
+  transition-duration: 0.3s;
+}
+
+/* ....logout button.... */
+
+.logout_btn:hover {
+  background-color: rgb(212, 108, 220);
+}
+
+.logout_icon {
+  width: 1px;
+
+  position: absolute;
+  bottom: -30px;
+  color: white;
+  transition-duration: 0.3s;
+  font-size: 2px;
+}
+
+.logout_btn:hover .logout_icon {
+  width: 30px;
+  transition-duration: 0.3s;
+  transform: translateY(-37px);
+}
+
+.logout_btn::before {
+  content: "Logout";
+  color: white;
+  transition-duration: 0.3s;
+}
+
+.logout_btn:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  transform: translateY(-20px);
+  transition-duration: 0.3s;
+}
+
+/* ....delete button.... */
+
+.pro_delete_btn:hover {
+  background-color: rgb(209, 27, 14);
+}
+
+.pro_delete_icon {
+  width: 1px;
+
+  position: absolute;
+  bottom: -30px;
+  color: white;
+  transition-duration: 0.3s;
+  font-size: 2px;
+}
+
+.pro_delete_icon path {
+  fill: white;
+}
+
+.pro_delete_btn:hover .pro_delete_icon {
+  width: 25px;
+  transition-duration: 0.3s;
+  transform: translateY(-34px);
+}
+
+.pro_delete_btn::before {
+  content: "Delete Profile";
+  color: white;
+  transition-duration: 0.3s;
+}
+
+.pro_delete_btn:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  transform: translateY(-20px);
+  transition-duration: 0.3s;
 }
 
 @media screen and (max-width: 600px) {
   .account {
-    flex-direction: column-reverse;
+    width: 100%;
     height: 93vh;
-    overflow-y: scroll;
-    margin: 0;
-    padding: 0;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
   }
 
-  .accountleft {
-    padding: 2vmax;
+  .account_left {
+    width: 100%;
+    height: 80vh;
     overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 9% 9% 19% 9%;
+  }
+
+  .account_right {
+    position: relative;
     width: 100%;
-  }
-
-  .accountright {
-    height: 300px;
-    overflow-y: hidden;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .profile_iden{
-    margin-right: 1vmax;
-  }
-
-  .profile_edit {
+    height: 20vh;
     flex-direction: row;
-    width: 100%;
-  }
-  
-
-  .profile_stats{
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.164);
   }
 
+  .userName {
+    margin: 1vmax 0 0;
+  }
+
+  .profile_details {
+    width: 20vw;
+    margin-left: 20vw;
+    position: relative;
+    bottom: 12px;
+  }
+
+  .settings_btn {
+    margin: 0 0 4vw 20vw;
+  }
+
+  .account_footer_txt {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    font-size: 0.5vmax;
+    padding: 0 0 3vmax 11vmax;
+    margin: auto;
+  }
+
+  /* ....logout button.... */
+
+  .logout_btn:hover {
+    background-color: rgb(212, 108, 220);
+  }
+
+  .logout_btn:hover .logout_icon {
+    width: 1px;
+    transition-duration: 0;
+    transform: none;
+  }
+
+  .logout_btn::before {
+    content: "Logout";
+    color: white;
+    transition-duration: 0;
+  }
+
+  .logout_btn:hover::before {
+    transform: none;
+    transition-duration: 0;
+  }
+
+  /* ....delete button.... */
+
+  .pro_delete_btn:hover {
+    background-color: rgb(209, 27, 14);
+  }
+  .pro_delete_btn:hover .pro_delete_icon {
+    width: 1px;
+    transition-duration: 0;
+    transform: none;
+  }
+  .pro_delete_btn:hover::before {
+    opacity: 1;
+    transform: none;
+    transition-duration: 0;
+  }
+
+  .fl_ufl_btn {
+    font-size: 10px;
+    padding:0 0 15px 40px;
+    border-radius: 7px;
+  }.fl_ufl_btn:hover {
+    background-color: rgba(0, 0, 0, 0);
+  }
 }

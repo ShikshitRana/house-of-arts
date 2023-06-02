@@ -3,7 +3,7 @@ const { connectDatabase } = require("./config/database");
 const cloudinary = require("cloudinary");
 connectDatabase();
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,

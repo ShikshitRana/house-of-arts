@@ -1,120 +1,287 @@
 .register {
-  min-height: 100vh;
-  background-image: linear-gradient(#cec1ff, #fff5bc);
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2vmax;
-  box-sizing: border-box;
+  flex-direction: row;
+
+  padding: 0px;
 }
 
-.form_and_avatar {
-  background-color: white;
-  width: 70%;
-  border-radius: 30px;
-  box-sizing: border-box;
-  padding: 2vmax;
+.left_div_signup {
+  height: 100vh;
+  width: 10%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  padding: 5% 0;
+} 
+
+.logo_img_reg {
+  height: 80px;
 }
 
 .registerForm {
   background-color: white;
-  width: 100%;
+  height: 100vh;
+  width: 30%;
   box-sizing: border-box;
+  padding: 4vmax;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-.logo_reg {
-  display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  line-height: 0;
-  margin: 1vmax 1vmax 0 1vmax;
 }
 
-.logo_img_reg {
-  height: 80px;
-  padding-bottom: 10px;
+.h_txt {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: "Playfair Display", serif;
+}
+
+.h_des {
+  display: flex;
+  flex-direction: row;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.381);
+}
+
+.h_login {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2vmax;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.381);
+}
+
+.h_login > a {
+  text-decoration: none;
+  margin-left: 7px;
+  color: #f495ffbe;
+}
+
+.h_login > a:hover {
+  color: #f173ff;
+}
+
+.file_div {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2vmax;
+}
+
+.profile_pic {
+  text-align: center;
+  width: 6vmax;
+  overflow: hidden;
+  position: relative;
+  padding: 0.5vmax;
+  cursor: pointer;
+}
+
+
+.upload_btn {
+  cursor: pointer;
+  position: absolute;
+  height: 6vmax;
+  width: 6vmax;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 10;
 }
 
 .registerInputs {
-  box-sizing: border-box;
-  padding: 1vmax 2vmax;
-  width: 80%;
-  border-radius: 40px;
-  border: 1px solid #ccc;
-  margin: 1vmax;
-  font: 100 1.2rem;
-  outline: none;
-}
-
-.registerForm > input[type="file"] {
-  display: flex;
-  flex-direction: row;
-  padding: 1vmax 0vmax;
-  width: 80%;
-  border-radius: 40px;
-  border: 1px solid #ccc;
-  margin: 1vmax;
-  font: 100 1.2rem;
-  outline: none;
-}
-
-.registerForm > input[type="file"]::-webkit-file-upload-button {
-  background-color: rgb(255, 255, 255);
-  content: "hii";
-  color: rgba(0, 0, 0, 0.419);
   width: 100%;
-  padding: 0vmax;
-  border-radius: 40px;
-  border: none;
-  font: 500 1.2rem;
+  color: #000000b3;
+  font-weight: 600;
+  box-sizing: border-box;
+  padding: 0.5vmax 0vmax;
+  border: 0px;
+  border-bottom: 2px solid #cccccc6d;
+  margin-bottom: 2vmax;
+  font: 100 1.2rem;
+  outline: none;
 }
 
-.registerForm > a {
+.registerInputs:focus {
+  border-bottom: 2px solid #000;
+}
+
+.registerInputs::placeholder {
+  color: #cccccc95;
+  font-weight: 500;
+}
+
+.check_div {
+  margin-bottom: 8px;
+}
+
+.tick {
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+}
+
+.label_chk {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.381);
+}
+
+.label_chk > a {
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.342);
-  margin: 1vmax;
+  color: #f495ffbe;
+}
+
+.label_chk > a:hover {
+  color: #f173ff;
+}
+
+.end_div {
+  position: relative;
+  width: 60%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll_container {
+  position: absolute;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  transition: 1s;
+  animation: primary 100s linear infinite;
+}
+
+.scroll_container:hover {
+  animation-play-state: paused;
+}
+
+@keyframes primary {
+  from {
+    top: 105vh;
+  }
+  to {
+    top: -750%;
+  }
+}
+
+.scroll_img {
+  width: 100%;
+  margin: 5%;
+  border-radius: 5px;
+  transition: 0.5s;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.scroll_img:hover {
+  transform: scale(0.99);
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+}
+
+.sm_div {
+  display: none;
 }
 
 @media screen and (max-width: 600px) {
-  .form_and_avatar {
-    background-color: #cec1ff00;
+  .register {
     width: 100%;
+    height: fit-content;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    align-items: center;
+    justify-content: flex-start;
     flex-direction: column;
   }
 
-  .registerForm {
-    margin-top: 2vmax;
-    border-radius: 30px;
-    padding: 2vmax;
+  .left_div_signup {
+    height: auto;
     width: 100%;
+    flex-direction: row;
+    padding: 6vmax;
   }
 
-  .registerForm > input {
-    padding: 4vw 8vw;
+  .logo_img_a {
+    display: none;
+  }
+
+  .registerForm {
+    height: auto;
+    width: 100%;
+    padding: 0vmax 6vmax;
+  }
+
+  .profile_pic {
     margin: 2vmax;
-    font: 100 1.2rem;
+    width: 11vmax;
   }
 
-  .registerForm > input[type="file"] {
-    width: 80%;
+  .registerInputs {
+    margin-bottom: 3vmax;
+  }
+  
+  .end_div {
+
+    width: 100%;
+    height: 45vh;
+  }
+  
+  .scroll_container {
+    width: 100%;
+    height: 15vh;
+    flex-direction: row;
+    animation: primary 100s linear infinite;
+  }
+  
+  @keyframes primary {
+    from {
+      left: 105vw;
+    }
+    to {
+      left: -350%;
+    }
+  }
+  
+  .scroll_img {
+    height: 100%;
+    width: auto;
+    margin: 4%;
   }
 
-  .registerForm > input[type="file"]::-webkit-file-upload-button {
-   
-  background-color: rgb(255, 255, 255);
-    margin: 2vw 0;
-    font: 100 1.2rem;
+  .sm_div {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 2vmax;
+    padding: 2vmax;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15vmax;
   }
 
-  .registerForm > a {
-    align-self: center;
-    text-decoration: none;
-    color: rgba(0, 0, 0, 0.342);
+  .sm_logo_img{
+    height: 4vmax;
+    opacity: 0.7;
   }
+
+  .sm_text{
+    font-size: 0.6rem;
+    color: #000000b0;
+  }
+  
 }

@@ -3,6 +3,8 @@ import { useEffect } from "react";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+// $env:PORT = 8000; npm start
+
 import { useDispatch, useSelector } from "react-redux";
 import { loadUser } from "./Actions/User";
 
@@ -16,13 +18,13 @@ import UpdateProfile from "./Components/UpdateProfile/UpdateProfile";
 import UpdatePassword from "./Components/UpdatePassword/UpdatePassword";
 import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
-import UserProfile from "./Components/UserProfile/UserProfile"; 
+import UserProfile from "./Components/UserProfile/UserProfile";
 import Search from "./Components/Search/Search";
 import NotFound from "./Components/NotFound/NotFound";
- 
+
 function App() {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(loadUser());
   }, [dispatch]);
@@ -31,12 +33,9 @@ function App() {
 
   return (
     <Router>
-
+      {isAuthenticated && <Header />}
       <Routes>
-        <Route 
-          path="/" 
-          element={isAuthenticated ? <Home /> : <Login />} 
-        />
+        <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
 
         <Route
           path="/account"
@@ -80,15 +79,9 @@ function App() {
         <Route path="search" element={<Search />} />
 
         <Route path="*" element={<NotFound />} />
-
       </Routes>
-
-
-      {isAuthenticated && <Header />}
     </Router>
   );
 }
 
 export default App;
-//https://house-of-arts.onrender.com
-//http://localhost:5000

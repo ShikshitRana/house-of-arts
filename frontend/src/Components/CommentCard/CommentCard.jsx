@@ -1,11 +1,14 @@
-import { Button, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./CommentCard.css";
-import { Delete } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCommentOnPost } from "../../Actions/Post";
-import { getFollowingPosts, getMyPosts } from "../../Actions/User";
+import {
+  getFollowingPosts,
+  getMyPosts,
+  getUserPosts,
+} from "../../Actions/User";
+import { Avatar } from "@mui/material";
 
 const CommentCard = ({
   userId,
@@ -26,25 +29,33 @@ const CommentCard = ({
       dispatch(getMyPosts());
     } else {
       dispatch(getFollowingPosts());
+      dispatch(getUserPosts(userId));
     }
   };
 
   return (
     <div className="commentUser">
       <Link to={`/user/${userId}`}>
-        <img src={avatar} alt={name} />
-        <Typography style={{ minWidth: "6vmax" }}>{name}</Typography>
+        <Avatar
+          src={avatar}
+          sx={{
+            height: "3vmax",
+            width: "3vmax",
+            border: "1px solid lightgray",
+          }}
+        />
+        <p className="user_name">{name}</p>
       </Link>
-      <Typography>{comment}</Typography>
+      <p className="comment_txt">{comment}</p>
 
       {isAccount ? (
-        <Button onClick={deleteCommentHandle}>
-          <Delete />
-        </Button>
+        <button className="comment_dlt_btn" onClick={deleteCommentHandle}>
+          <img src="/images/delete.png" alt="delete" />
+        </button>
       ) : userId === user._id ? (
-        <Button onClick={deleteCommentHandle}>
-          <Delete />
-        </Button>
+        <button className="comment_dlt_btn" onClick={deleteCommentHandle}>
+          <img src="/images/delete.png" alt="delete" />
+        </button>
       ) : null}
     </div>
   );

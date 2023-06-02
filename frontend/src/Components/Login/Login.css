@@ -1,70 +1,193 @@
 .login {
   height: 100vh;
   width: 100vw;
-  background-image: linear-gradient(#fff5bc, #cec1ff);
+  overflow: hidden;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
 
-  padding: 2vmax;
-  box-sizing: border-box;
+  padding: 0px;
+}
+
+.left_div {
+  width: 70%;
+  height: 100vh;
+}
+
+.left {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .loginForm {
-  background-color: white;
-  height: auto;
-  width: 40%;
-  border-radius: 30px;
+  height: 100vh;
+  width: 30%;
   box-sizing: border-box;
-  padding: 2vmax;
+  padding: 4vmax;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  line-height: 0;
-  margin: 1vmax 1vmax 0 1vmax;
 }
 
 .logo_img {
-  height: 90px;
-  padding-bottom: 10px;
+  height: 3.5vmax;
+  margin-bottom: 2vmax;
 }
 
 .loginForm > input {
+  width: 100%;
+  color: #000000b3;
+  font-weight: 600;
   box-sizing: border-box;
-  padding: 1vmax 2vmax;
-  width: 80%;
-  border-radius: 40px;
-  border: 1px solid #ccc;
-  margin: 1vmax;
+  padding: 0.5vmax 0vmax;
+  border: 0px;
+  border-bottom: 2px solid #cccccc6d;
+  margin-bottom: 2vmax;
   font: 100 1.2rem;
   outline: none;
 }
+
+.loginForm > input:focus {
+  border-bottom: 2px solid #000;
+}
+
+.loginForm > input::placeholder {
+  color: #cccccc95;
+  font-weight: 500;
+}
+
+.pwdDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2vmax;
+}
+
+.pwdDiv > input {
+  width: 93%;
+  color: #0000008d;
+  font-weight: 600;
+  box-sizing: border-box;
+  padding: 0.5vmax 0vmax;
+  border: 0px;
+  border-bottom: 2px solid #cccccc6d;
+  font: 100 1.2rem;
+  outline: none;
+}
+
+.pwdDiv > input:focus {
+  border-bottom: 2px solid #000;
+}
+
+.pwdDiv > input::placeholder {
+  color: #cccccc95;
+  font-weight: 500;
+}
+
+.show {
+  width: 7%;
+  display: flex;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.show img {
+  height: 1.2rem;
+}
+
+.sbt_btn {
+  width: 100%;
+  height: 2.4vmax;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  background-color: #000;
+  border: 2px solid #000;
+  border-radius: 5px;
+  margin-bottom: 1vmax;
+}
+
+.sbt_btn:hover {
+  background-color: #000;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.897);
+}
+
 .loginForm > a {
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.342);
-  margin: 1vmax;
+}
+
+.link_btn {
+  color: #00000096;
+  font-size: 0.9rem;
+}
+
+.link_btn:hover {
+  color: #000;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25vh;
 }
 
 @media screen and (max-width: 600px) {
-  .loginForm {
+  .login {
+    width: 100vw;
+    height: fit-content;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  .left_div {
     width: 100%;
+    height: fit-content;
+  }
+  
+  .loginForm {
+    height: auto;
+    width: 100%;
+    padding: 6vmax;
+  }
+  .logo_img {
+    height: 4vmax;
+    margin-bottom: 4vmax;
   }
 
   .loginForm > input {
-    padding: 4vw 8vw;
-    margin: 2vmax;
-    font: 100 1.2rem;
-    margin: 4vw;
+    margin-bottom: 4vmax;
   }
 
-  .loginForm > a {
-    align-self: center;
+  .pwdDiv {
+    margin-bottom: 4vmax;
+  }
+
+  .sbt_btn {
+    height: 4vmax;
+  }
+  .sbt_btn:hover {
+    background-color: #000;
+  }
+  .link_btn {
+    margin-top: 0.5rem ;
+  }
+
+  .footer {
+    margin-top: 17vmax;
   }
 }

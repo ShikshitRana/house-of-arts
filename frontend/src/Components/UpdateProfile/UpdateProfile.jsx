@@ -1,5 +1,4 @@
-import { Avatar,Button } from "@mui/material";
-import logo from "../../Assets/logo.png";
+import { Avatar } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./UpdateProfile.css";
@@ -22,7 +21,7 @@ const UpdateProfile = () => {
 
   const dispatch = useDispatch();
   const alert = useAlert();
- 
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
 
@@ -63,42 +62,66 @@ const UpdateProfile = () => {
   return loading ? (
     <Loader />
   ) : (
-    <div className="updateProfile">
-      <form className="updateProfileForm" onSubmit={submitHandler}>
-        <div className="logo">
-          <img className="logo_img" src={logo} alt="" />
+    <div className="newPost">
+      <form className="newPostForm" onSubmit={submitHandler}>
+        <div className="h_txt">Update Profile?</div>{" "}
+        <div className="h_login">
+          Update your name, email address and profile picture.
         </div>
-
-        <Avatar
-          src={avatarPrev}
-          alt="User"
-          sx={{ height: "10vmax", width: "10vmax" }}
-        />
-
-        <input type="file" accept="image/*" onChange={handleImageChange} />
-
+        <div className="file_div">
+          <div className="profile_pic">
+            <img
+              className="upload_img_btn"
+              src="/images/uploadimg.png"
+              alt="upload"
+            />
+            <input
+              className="upload_btn"
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              required
+            />
+          </div>
+        </div>
         <input
           type="text"
           value={name}
           placeholder="Name"
-          className="updateProfileInputs"
+          className="registerInputs"
           required
           onChange={(e) => setName(e.target.value)}
         />
-
         <input
           type="email"
           placeholder="Email"
-          className="updateProfileInputs"
+          className="registerInputs"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-
-        <Button disabled={updateLoading} type="submit">
+        <button className="sbt_btn" disabled={updateLoading} type="submit">
           Update
-        </Button>
+        </button>
       </form>
+
+      <div className="end_div_np">
+        <Avatar
+          src={avatarPrev}
+          alt="User"
+          sx={{
+            height: "10vmax",
+            width: "10vmax",
+            boxShadow: 3,
+            border: "1px solid lightgray",
+            "@media (max-width: 600px)": {
+              height: "19vmax",
+              width: "19vmax",
+              margin: "10vmax auto",
+            },
+          }}
+        />
+      </div>
     </div>
   );
 };

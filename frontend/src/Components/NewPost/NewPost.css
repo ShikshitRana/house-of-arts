@@ -1,80 +1,91 @@
 .newPost {
-  height: 90vh;
-  background-image: linear-gradient(to right, #fff5bc, #cec1ff);
-  overflow-y: scroll;
-  display: flex;
-  align-items: center; 
+  height: 100vh;
+  width: 85%;
+
+  display: flex; 
+  align-items: center;
   justify-content: center;
-  padding: 2vmax;
-  box-sizing: border-box;
+  flex-direction: row;
+
+  padding: 0px;
+  overflow: hidden;
 }
 
 .newPostForm {
-  height: 100%;
   background-color: white;
-  overflow-x: hidden;
-  width: 50%;
-  border-radius: 30px;
+  height: 100%;
+  width: 40%;
   box-sizing: border-box;
-  padding: 2vmax;
+  padding: 4vmax;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.upload_img_btn{
+  height: 40px;
+  margin: auto;
+}
+
+.end_div_np {
+  width: 70%;
+  height: 100vh;
+  display: flex;
   align-items: center;
-  /* margin-top: 100vh !important; */
+  justify-content: center;
 }
 
-.newPostForm > img {
-  display: block;
-  width: 100%;
-  object-fit: cover;
-}
-.newPostForm > h3 {
-  margin: 1vmax;
+
+.newpost_img {
+  max-width: 40vw;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 5px;
+  transition: 0.5s;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
-.newPostForm > input[type="text"] {
-  width: 100%;
-  padding: 1vmax;
-  border-radius: 30px;
-  border: none;
-  outline: none;
-  font: 100 1.2rem "Roboto", sans-serif;
-}
-
-.newPostForm > input[type="file"] {
-  border-radius: 30px;
-  margin: 2vmax;
-}
-
-.newPostForm > input[type="file"]::-webkit-file-upload-button {
-  background-color: rgb(38, 63, 173);
-  color: white;
-  width: 100%;
-  padding: 1vmax;
-  border-radius: 30px;
-  border: none;
-  font: 100 1.2rem "Roboto", sans-serif;
+.newpost_img:hover {
+  transform: scale(0.99);
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
 }
 
 @media screen and (max-width: 600px) {
   .newPost {
     height: 93vh;
-  }
-  .newPostForm {
     width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 8%;
   }
 
-  .newPostForm > input {
-    padding: 4vw 8vw;
-    margin: 2vmax;
-    font: 100 1.2rem "Roboto", sans-serif;
-    margin: 4vw;
-  }
-  .newPostForm > input[type="file"] {
+  .newPostForm{
     width: 100%;
+    height: fit-content;
+    padding: 0;
   }
 
-  .newPostForm > input[type="file"]::-webkit-file-upload-button {
-    width: 70%;
+  .upload_img_btn{
+    height: 30px;
+  }
+
+  .end_div_np {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .newpost_img {
+    max-width: 90%;
+    max-height: 100%;
+    margin: 5% 0;
+  }
+
+  .newpost_img:hover {
+    transform: scale(1);
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   }
 }

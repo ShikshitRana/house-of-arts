@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Avatar, Button, Dialog, Typography } from "@mui/material";
+import { Avatar, Button, Dialog} from "@mui/material";
 import { useAlert } from "react-alert";
 import { useParams, Navigate } from "react-router-dom";
 
@@ -98,7 +98,7 @@ const UserProfile = () => {
     <Loader />
   ) : (
     <div className="account">
-      <div className="accountleft">
+      <div className="account_left">
         {posts && posts.length > 0 ? (
           posts.map((post) => (
             <Post
@@ -115,104 +115,147 @@ const UserProfile = () => {
             />
           ))
         ) : (
-          <Typography variant="h6">User has not made any post</Typography>
-        )}
-      </div>
-
-      <div className="accountright">
-        {user && (
           <>
-            <div className="profile_edit">
-              <Avatar
-                className="profile_iden"
-                src={user.avatar.url}
-                sx={{ height: "8vmax", width: "8vmax" }}
-              />
-              <Typography variant="h5">{user.name}</Typography>
-              <Button
-              className="profile_unf"
-                variant="contained"
-                style={{
-                  color: following ? "red" : "green",
-                  backgroundColor: "white",
-                  boxShadow: "none",
-                  padding: "0 2max",
-                }}
-                onClick={followHandler}
-                disabled={followLoading}
-              >
-                {following ? "Unfollow" : "Follow"}
-              </Button>
-            </div>
-
-            <div className="profile_stats">
-              <div className="profile_fl">
-                <button onClick={() => setFollowersToggle(!followersToggle)}>
-                  <Typography>Followers</Typography>
-                </button>
-                <Typography>{user.followers.length}</Typography>
-              </div>
-              <div className="profile_fl">
-                <button onClick={() => setFollowingToggle(!followingToggle)}>
-                  <Typography>Following</Typography>
-                </button>
-                <Typography>{user.following.length}</Typography>
-              </div>
-              <div className="profile_pos">
-                <Typography>Posts</Typography>
-                <Typography>{user.posts.length}</Typography>
-              </div>
-            </div>
+            <p className="h_txt">No posts yet</p>
+            <p className="h_login">
+              When this user posts something, it will appear here.
+            </p>
           </>
         )}
-        <Dialog
-          open={followersToggle}
-          onClose={() => setFollowersToggle(!followersToggle)}
-        >
-          <div className="DialogBox">
-            <Typography variant="h4">Followers</Typography>
-
-            {user && user.followers.length > 0 ? (
-              user.followers.map((follower) => (
-                <User
-                  key={follower._id}
-                  userId={follower._id}
-                  name={follower.name}
-                  avatar={follower.avatar.url}
-                />
-              ))
-            ) : (
-              <Typography style={{ margin: "2vmax" }}>
-                You have no followers
-              </Typography>
-            )}
-          </div>
-        </Dialog>
-
-        <Dialog
-          open={followingToggle}
-          onClose={() => setFollowingToggle(!followingToggle)}
-        >
-          <div className="DialogBox">
-            <Typography variant="h4">Following</Typography>
-
-            {user && user.following.length > 0 ? (
-              user.following.map((follow) => (
-                <User
-                  key={follow._id}
-                  userId={follow._id}
-                  name={follow.name}
-                  avatar={follow.avatar.url}
-                />
-              ))
-            ) : (
-              <Typography style={{ margin: "2vmax" }}>
-                You're not following anyone
-              </Typography>
-            )}
-          </div>
-        </Dialog>
       </div>
+
+      <div className="account_right">
+        {user && (
+          <>
+            <div className="profile_personal">
+              <Avatar
+                src={user.avatar.url}
+                sx={{
+                  height: "10vmax",
+                  width: "10vmax",
+                  border: "2px solid lightgray",
+                }}
+              />
+
+              <p className="userName">
+                {user.name}
+                <span className="h_des">
+                  {following ? "following" : "\u3000"}
+                </span>
+              </p>
+            </div>{" "}
+            <div className="profile_details">
+              <div className="profile_fl">
+                <button onClick={() => setFollowersToggle(!followersToggle)}>
+                  <p>Followers</p>
+                </button>
+                <p>{user.followers.length}</p>
+              </div>
+
+              <div className="profile_fl">
+                <button onClick={() => setFollowingToggle(!followingToggle)}>
+                  <p>Following</p>
+                </button>
+                <p>{user.following.length}</p>
+              </div>
+
+              <div className="profile_pos profile_fl">
+                <button>Posts</button>
+                <p>{user.posts.length}</p>
+              </div>
+            </div>
+            <Button
+              variant="contained"
+              style={{
+                color: following ? "red" : "green",
+                backgroundColor: "white",
+                boxShadow: "none",
+                width: "fit-content",
+                margin: "5vmax 0",
+                "@media (maxWidth: 600px)": {
+                  margin: "5vmax 0 5vmax 15vmax",
+                },
+              }}
+              onClick={followHandler}
+              disabled={followLoading}
+            >
+              {following ? (
+                <p className="fl_ufl_btn">Unfollow</p>
+              ) : (
+                <p className="fl_ufl_btn">Follow</p>
+              )}
+            </Button>
+            <p className="account_footer_txt">
+              ©2023-2025 All Rights Reserved. HouseofArts® is a registered
+              trademark.{" "}
+              <a
+                rel="noreferrer"
+                target="_blank"
+                className="re"
+                href="https://www.freeprivacypolicy.com/live/26fff222-d4cb-404a-9e87-959062a480c4"
+              >
+                Privacy Policy
+              </a>{" "}
+              and{" "}
+              <a
+                rel="noreferrer"
+                target="_blank"
+                className="re"
+                href="https://www.termsandconditionsgenerator.com/live.php?token=5vnDsUgDSaBNRZJvUNzy3eUTANtdK1Bd"
+              >
+                Terms of Service
+              </a>{" "}
+              apply.
+            </p>
+          </>
+        )}
+      </div>
+
+      <Dialog
+        open={followersToggle}
+        onClose={() => setFollowersToggle(!followersToggle)}
+      >
+        <div className="LikeDialogBox">
+          <div className="h_txt">Followers</div>
+          <div className="h_login">These people follow this user.</div>
+
+          {user && user.followers.length > 0 ? (
+            user.followers.map((follower) => (
+              <User
+                key={follower._id}
+                userId={follower._id}
+                name={follower.name}
+                avatar={follower.avatar.url}
+              />
+            ))
+          ) : (
+            <p className="h_des">This user doesn't have any followers yet.</p>
+          )}
+        </div>
+      </Dialog>
+
+      <Dialog
+        open={followingToggle}
+        onClose={() => setFollowingToggle(!followingToggle)}
+      >
+        <div className="LikeDialogBox">
+          <div className="h_txt">Following</div>
+          <div className="h_login">See who this user is following.</div>
+
+          {user && user.following.length > 0 ? (
+            user.following.map((follow) => (
+              <User
+                key={follow._id}
+                userId={follow._id}
+                name={follow.name}
+                avatar={follow.avatar.url}
+              />
+            ))
+          ) : (
+            <p className="h_des">This user isn't following anyone yet.</p>
+          )}
+        </div>
+      </Dialog>
     </div>
   );
 };
